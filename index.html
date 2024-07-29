@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Dashboard</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/41e196d463.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <!--Apex charts-->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+
+<body>
+    <main class="w-full bg-[#FFFCF8] min-h-screen flex">
+
+
+        <!-- left bar -->
+        <section class="relative text-black bg-white p-2">
+            <div>
+                <div class="w-[100px] flex justify-center mt-14">
+                    <img src="./images/logo.png" alt="" />
+                </div>
+            </div>
+            <div class="mt-24">
+                <ul class="space-y-4 font-semibold text-2xl flex flex-col items-center gap-8">
+                    <li><a href="#"><i
+                                class="fa-solid fa-table-cells-large p-4 rounded-2xl bg-[#303030] text-white"></i></a>
+                    </li>
+                    <li class="opacity-60 hover:opacity-100"><a href="#"><i
+                                class="fa-regular fa-calendar text-[#707070]"></i></a></li>
+                    <li class="opacity-60 hover:opacity-100"><a href="#"><i
+                                class="fa-regular fa-message text-[#707070]"></i></a></li>
+                    <li class="opacity-60 hover:opacity-100"><a href="#"><i
+                                class="fa-regular fa-circle-dot text-[#707070]"></i></a></li>
+                    <li class="opacity-60 hover:opacity-100"><a href="#"><i
+                                class="fa-solid fa-gear text-[#707070]"></i></a></li>
+                    <li class="opacity-60 hover:opacity-100"><a href="#"><i
+                                class="fa-solid fa-arrow-right-from-bracket text-[#707070]"></i></a></li>
+                </ul>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- main body -->
+        <section class="w-[50%] p-10 rounded-l-2xl">
+            <div class="flex justify-center">
+                <div class="space-y-3 w-full">
+                    <h1 class="text-4xl font-semibold">Health Overview</h1>
+                    <p class="opacity-75 font-normal text-lg">August 12, 2021</p>
+                </div>
+                <div class="w-full">
+                    <div class="w-full relative flex justify-end items-center gap-2">
+                        <div class="relative top-0 left-0 z-20 border-2 border-white rounded-full cursor-pointer">
+                            <i class="fa-solid fa-magnifying-glass p-4 rounded-2xl bg-[#E8E7E7]"></i>
+                        </div>
+                        <div class="relative top-0 left-0 z-20 border-2 border-white rounded-full cursor-pointer">
+                            <i class="fa-regular fa-bell p-4 rounded-2xl bg-[#E8E7E7]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- <div class="card">
+                <h2>Blood Sugar</h2>
+                <p>80 mg / dL</p>
+                <div class="pulse"></div>
+                <div class="chart-area">
+                    <div class="grid"></div>
+                </div>
+            </div> -->
+
+
+
+
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <!-- chart -->
+            <!-- <div id="chart-data" class="flex justify-around gap-1 items-end h-20"></div> -->
+
+
+
+
+
+            <!-- Today -->
+            <!-- <div class="my-10">
+
+                <div class="flex items-center justify-between mb-3 mr-1">
+                    <h3 class="text-xl font-semibold">Today</h3>
+                    <div class="flex gap-1">
+                        <div class="w-1 h-1 bg-[#D8D8D8] rounded-full"></div>
+                        <div class="w-1 h-1 bg-[#D8D8D8] rounded-full"></div>
+                        <div class="w-1 h-1 bg-[#D8D8D8] rounded-full"></div>
+                    </div>
+                </div>
+                <hr />
+                <div class="my-10 space-y-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#32A7E2] rounded-full flex items-center justify-center">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M4.8 12.8C3.92 12.8 3.208 13.52 3.208 14.4C3.208 15.28 3.92 16 4.8 16C5.68 16 6.4 15.28 6.4 14.4C6.4 13.52 5.68 12.8 4.8 12.8ZM0 0V1.6H1.6L4.48 7.672L3.4 9.632C3.272 9.856 3.2 10.12 3.2 10.4C3.2 11.28 3.92 12 4.8 12H14.4V10.4H5.136C5.024 10.4 4.936 10.312 4.936 10.2L4.96 10.104L5.68 8.8H11.64C12.24 8.8 12.768 8.472 13.04 7.976L15.904 2.784C15.968 2.672 16 2.536 16 2.4C16 1.96 15.64 1.6 15.2 1.6H3.368L2.616 0H0ZM12.8 12.8C11.92 12.8 11.208 13.52 11.208 14.4C11.208 15.28 11.92 16 12.8 16C13.68 16 14.4 15.28 14.4 14.4C14.4 13.52 13.68 12.8 12.8 12.8Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-normal opacity-90">Grocery</h1>
+                                <p class="opacity-50 font-normal text-sm">
+                                    5:12 pm • Belanja di pasar
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-lg">-326.800</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#B548C6] rounded-full flex items-center justify-center">
+                                <svg width="14" height="16" viewBox="0 0 14 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M0 11.7895C0 12.5305 0.328421 13.1958 0.842105 13.6589V15.1579C0.842105 15.6211 1.22105 16 1.68421 16H2.52632C2.98947 16 3.36842 15.6211 3.36842 15.1579V14.3158H10.1053V15.1579C10.1053 15.6211 10.4842 16 10.9474 16H11.7895C12.2526 16 12.6316 15.6211 12.6316 15.1579V13.6589C13.1453 13.1958 13.4737 12.5305 13.4737 11.7895V3.36842C13.4737 0.421053 10.4589 0 6.73684 0C3.01474 0 0 0.421053 0 3.36842V11.7895ZM2.94737 12.6316C2.24842 12.6316 1.68421 12.0674 1.68421 11.3684C1.68421 10.6695 2.24842 10.1053 2.94737 10.1053C3.64632 10.1053 4.21053 10.6695 4.21053 11.3684C4.21053 12.0674 3.64632 12.6316 2.94737 12.6316ZM10.5263 12.6316C9.82737 12.6316 9.26316 12.0674 9.26316 11.3684C9.26316 10.6695 9.82737 10.1053 10.5263 10.1053C11.2253 10.1053 11.7895 10.6695 11.7895 11.3684C11.7895 12.0674 11.2253 12.6316 10.5263 12.6316ZM11.7895 7.57895H1.68421V3.36842H11.7895V7.57895Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-normal opacity-90">Transportation</h1>
+                                <p class="opacity-50 font-normal text-sm">
+                                    5:12 pm • Naik bus umum
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-lg">-15.800</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#FF8700] rounded-full flex items-center justify-center">
+                                <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.4 13.6V8.8H9.6V13.6H13.6V7.2H16L8 0L0 7.2H2.4V13.6H6.4Z" fill="white" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-normal opacity-90">Housing</h1>
+                                <p class="opacity-50 font-normal text-sm">
+                                    5:12 pm • Bayar Listrik
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-lg">-185.750</p>
+                    </div>
+                </div>
+
+
+
+
+                Monday, 23 March 2020
+                <div class="mt-8 flex items-center justify-between mb-3 mr-1">
+                    <h3 class="text-xl font-semibold">Monday, 23 March 2020</h3>
+                    <div class="flex gap-1">
+                        <div class="w-1 h-1 bg-[#D8D8D8] rounded-full"></div>
+                        <div class="w-1 h-1 bg-[#D8D8D8] rounded-full"></div>
+                        <div class="w-1 h-1 bg-[#D8D8D8] rounded-full"></div>
+                    </div>
+                </div>
+                <hr />
+                <div class="my-10 space-y-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#DC3434] rounded-full flex items-center justify-center">
+                                <svg width="18" height="11" viewBox="0 0 18 11" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.4013 9.7446H16.9798C16.4686 9.7446 16.4883 9.25734 16.4883 9.25734C16.4883 9.25734 16.485 9.25847 16.4841 9.25847C16.1996 6.39734 14.3357 4.00688 11.7749 2.96572C11.7676 2.96207 11.7625 2.95841 11.7552 2.95504C11.3399 2.77341 11.3301 2.36656 11.3301 2.36656V1.27452C11.3301 0.571045 10.7602 0 10.0558 0H7.77195C7.06819 0 6.49743 0.571045 6.49743 1.27452V2.52879C6.4859 2.63395 6.42377 2.80855 6.15216 2.92355C6.13473 2.93114 6.12151 2.93845 6.10746 2.94492C3.52496 3.97201 1.63891 6.36613 1.34509 9.2385L1.34172 9.23738C1.34172 9.23738 1.29954 9.7446 0.814815 9.7446H0.499348C0.399254 9.74685 0 9.78199 0 10.1936V10.5229C0.00590446 10.664 0.0671983 11 0.529433 11H17.2781C17.7361 11 17.8157 10.7037 17.8275 10.5552V10.22C17.8275 9.82417 17.5447 9.75444 17.4013 9.7446ZM10.4098 2.02804C10.4073 2.12982 10.3685 2.50574 9.89699 2.46188C9.87112 2.45935 9.85397 2.46019 9.83654 2.46103C9.53345 2.42364 9.22754 2.39861 8.91376 2.39861C8.55696 2.39861 8.20804 2.4332 7.86389 2.48184C7.83999 2.48071 7.81244 2.48184 7.77842 2.48606C7.40419 2.53048 7.33868 2.29599 7.32968 2.17565V1.59505C7.32968 1.14631 7.69294 0.782481 8.14196 0.782481H9.59783C10.0466 0.782481 10.4101 1.14631 10.4101 1.59505V2.02804H10.4098ZM13.8949 9.73841H13.2513C12.922 9.73841 12.8383 9.56156 12.8191 9.43785C12.8191 9.40833 12.8177 9.36784 12.816 9.32004C12.7941 8.67393 12.6288 6.45666 11.4029 4.70276L11.4088 4.70248L11.2671 4.46236C11.2519 4.37408 11.2573 4.24558 11.4738 4.42581C12.5363 5.34128 14.1069 7.08478 14.1971 9.46484C14.1912 9.56803 14.1454 9.73841 13.8949 9.73841Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-normal opacity-90">Food and Drink</h1>
+                                <p class="opacity-50 font-normal text-sm">
+                                    5:12 pm • Makan Steak
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-lg">-156.000</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-[#4BA83D] rounded-full flex items-center justify-center">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M9 0C4.032 0 0 4.032 0 9C0 13.968 4.032 18 9 18C13.968 18 18 13.968 18 9C18 4.032 13.968 0 9 0ZM7.2 13.05V4.95L12.6 9L7.2 13.05Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="text-xl font-normal opacity-90">Entertainment</h1>
+                                <p class="opacity-50 font-normal text-sm">
+                                    5:12 pm • Nonton Bioskop
+                                </p>
+                            </div>
+                        </div>
+                        <p class="font-semibold text-lg">-35.200</p>
+                    </div>
+                </div>
+            </div> -->
+        </section>
+
+
+
+
+        <!-- right bar -->
+        <!-- <section class="bg-[#F9FAFC] my-8 px-10 py-10 rounded-r-2xl">
+
+            Where your money go?
+            <h1 class="text-2xl font-semibold">Where your money go?</h1>
+            <div class="my-10 space-y-10">
+                <div class="text-[#273240] space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-medium">Food and Drinks</h3>
+                        <p class="font-normal">872.400</p>
+                    </div>
+                    <div class="w-full relative pt-1">
+                        <div class="overflow-hidden h-2      text-xs flex rounded bg-gray-200">
+                            <div style="width: 30%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#31BA96]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-[#273240] space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-medium">Shopping</h3>
+                        <p class="font-normal">1.378.200</p>
+                    </div>
+                    <div class="w-full relative pt-1">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width: 60%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#31BA96]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-[#273240] space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-medium">Housing</h3>
+                        <p class="font-normal">928.500</p>
+                    </div>
+                    <div class="w-full relative pt-1">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width: 45%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#31BA96]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-[#273240] space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-medium">Transportation</h3>
+                        <p class="font-normal">420.700</p>
+                    </div>
+                    <div class="w-full relative pt-1">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width: 25%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#31BA96]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-[#273240] space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-lg font-medium">Vehicle</h3>
+                        <p class="font-normal">520.000</p>
+                    </div>
+                    <div class="w-full relative pt-1">
+                        <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-200">
+                            <div style="width: 50%"
+                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#31BA96]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            Save more money
+            <div class="w-[300px] relative mt-20 bg-[#EDF0F6] px-10 py-10 rounded-3xl">
+                <div class="w-2/3 absolute flex justify-between -top-10 left-16">
+                    <img src="images/5.png" alt="" />
+                    <img class="" src="images/6.png" alt="" />
+                </div>
+                <div class="mt-10 space-y-5">
+                    <h2 class="text-xl font-semibold text-[#273240]">
+                        Save more money
+                    </h2>
+                    <p class="text-[#404852] opacity-70">
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim.
+                    </p>
+
+                    <button class="w-full bg-black hover:bg-gray-900 text-white rounded-lg uppercase py-4">
+                        View Tips
+                    </button>
+                </div>
+            </div>
+        </section> -->
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- <script>
+        const data = [
+            10, 8, 4, 6, 5, 9, 4, 9, 10, 7, 10, 12, 10, 9, 6, 9, 5, 7, 8, 5,
+            8, 6, 12, 9,
+        ];
+        const container = document.getElementById("chart-data");
+
+        data.forEach((value, index) => {
+            const bar = document.createElement("div");
+            bar.classList.add("bar", "w-6", "bg-blue-200");
+            bar.style.height = `${value * 4}px`;
+
+            if (index === data.length - 2) {
+                bar.classList.add("bg-blue-500");
+            }
+
+            container.appendChild(bar);
+        });
+    </script> -->
+
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+
+                labels: ['', '', '', '', '', ''],
+                datasets: [{
+                    label: '',
+                    data: [3, 5, 4, 6, 5, 5.5],
+                    borderWidth: 1,
+                    backgroundColor: [
+                        'rgba(63,94,251,0.5)',
+                        'rgba(252,70,107,0.1)'
+                    ],
+                    fill: true,
+                    tension: 0.35,
+                    pointStyle: false
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: false,
+                },
+                elements: {
+                    point: false,
+                },
+                scales: {
+                    x: {
+
+                        grid: {
+                            display: false,
+                        },
+                        border: {
+                            display: false
+                        },
+                    },
+                    y: {
+                        display: false,
+
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
