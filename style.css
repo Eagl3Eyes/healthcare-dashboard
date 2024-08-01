@@ -5,3 +5,61 @@
 body {
     font-family: "Poppins", sans-serif;
 }
+
+
+
+/* .activity-chart {
+    width: 400px;
+    height: 250px !important;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================================================================== */
+/* Media Query */
+/* ==================================================================== */
+
+/* Mobile Devices */
+/* @media only screen and (max-width: 667px) {
+    .activity-chart {
+        width: 400px;
+        height: 500px;
+    }
+}
+
+
+
+@media only screen and (min-width: 360px) and (max-width: 740px) {}
+
+
+@media only screen and (min-width: 414px) and (max-width: 896px) {}
+
+@media only screen and (min-width: 412px) and (max-width: 915px) {
+    .activity-chart {
+        width: 350px;
+        height: 600px;
+    }
+} */
+
+/* Mobile Big Size */
+/* @media only screen and (min-width: 430px) and (max-width: 932px) {} */
+
+
+
+/* Tablet Devices */
+/* @media only screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {} */
