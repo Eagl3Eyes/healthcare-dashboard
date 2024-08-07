@@ -24,7 +24,7 @@
     <main class="w-full bg-[#FFFCF8] min-h-screen flex flex-col xl:flex-row">
 
         <!-- left bar -->
-        <!-- <section class="relative text-black bg-white p-2">
+        <section class="relative text-black bg-white p-2">
             <div>
                 <div class="w-[100px] flex justify-center mt-14">
                     <img src="./images/logo.png" alt="" />
@@ -47,7 +47,7 @@
                                 class="fa-solid fa-arrow-right-from-bracket text-[#707070]"></i></a></li>
                 </ul>
             </div>
-        </section> -->
+        </section>
 
 
 
@@ -216,7 +216,7 @@
                 <div class="relative">
                     <button id="bmiSelectionButton"
                         class="bg-[#303030] py-4 px-6 rounded-2xl border border-[#CACACA] focus:outline-none flex items-center justify-between ">
-                        <span id="selectedOption" class="text-white">Last Week</span>
+                        <span id="bmiSelectedOption" class="text-white">Last Week</span>
                         <svg class="w-4 h-4 ml-2 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
@@ -273,7 +273,7 @@
                     </div>
 
                     <div class="mt-2">
-                        <canvas id="myHorizontalChart" width="400" height="68"></canvas>
+                        <canvas id="myHorizontalChart" width="550" height="60"></canvas>
                     </div>
                 </div>
             </div>
@@ -399,7 +399,7 @@
         document.querySelectorAll('#bmiSelectionMenu a').forEach(option => {
             option.addEventListener('click', function () {
                 var selectedValue = this.getAttribute('data-value');
-                document.getElementById('selectedOption').innerText = selectedValue;
+                document.getElementById('bmiSelectedOption').innerText = selectedValue;
                 document.getElementById('bmiSelectionMenu').classList.add('hidden');
             });
         });
@@ -768,17 +768,21 @@
                 datasets: [
                     {
                         label: 'BMI',
-                        data: [9.9],
+                        data: [
+                            { x: 24.9, y: 2 }
+                        ],
                         type: 'scatter',
                         pointBackgroundColor: 'rgba(255, 99, 132, 1)',
                         pointBorderColor: 'rgba(255, 99, 132, 1)',
                         pointRadius: 5,
                         pointHoverRadius: 7,
-                        showLine: false
+                        showLine: true
                     },
                     {
                         label: '',
-                        data: [25],
+                        data: [
+                            { x: [15, 40], y: 1 }
+                        ],
                         type: 'bar',
                         backgroundColor: gradientFill,
                         borderColor: 'rgba(54, 162, 235, 1)',
@@ -826,25 +830,25 @@
                             drawBorder: false
                         },
                         beginAtZero: false,
-                        min: 0,
-                        max: 25,
+                        min: 15,
+                        max: 40,
                         categoryPercentage: 10,
                         barPercentage: 10,
                         ticks: {
                             callback: function (value) {
-                                if (value === 0) {
+                                if (value === 15) {
                                     return '15';
                                 }
-                                else if (value === 5) {
+                                else if (value === 20) {
                                     return '18.5';
                                 }
-                                else if (value === 10) {
+                                else if (value === 25) {
                                     return '25';
                                 }
-                                else if (value === 15) {
+                                else if (value === 30) {
                                     return '30';
                                 }
-                                else if (value === 25) {
+                                else if (value === 40) {
                                     return '40';
                                 }
 
@@ -875,7 +879,6 @@
             };
 
             const myHorizontalChart = new Chart(ctx, {
-                type: 'bar',
                 data: data,
                 options: options
             });
